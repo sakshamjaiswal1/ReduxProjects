@@ -1,0 +1,47 @@
+.vmsFormCont {
+  margin-top: 60px;
+}
+
+.formHidden {
+  display: none !important;
+}
+
+.vmsFormTable2 {
+  /* width: 100%; */
+  display: flex;
+}
+
+.vmsFormInput {
+  flex: 1;
+  /* margin: 0 60px; */
+}
+.vmsFormRadio {
+  flex: 1;
+  /* margin: 0 60px; */
+  display: flex;
+  flex-direction: column;
+}
+.VmsHealthTitle {
+  text-align: center;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+.vmsHealthQuestion {
+  text-align: center;
+}
+.vmsOptionContainer {
+  text-align: center;
+}
+.vmsHealthOptions {
+  list-style-type: none;
+  display: inline;
+  /* text-align: end; */
+  /* margin-left: 10%; */
+}
+.vmsHealthInputs {
+  margin: 0px 5px;
+}
+.vmsHealthRaio {
+  text-align: start !important;
+  margin-right: 40px;
+}
