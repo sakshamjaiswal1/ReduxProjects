@@ -12,17 +12,17 @@ const {productId}=useParams()
 console.log(productId)
 const dispatch =useDispatch()
 console.log(product)
-const fetchProductDetails= async ()=>{
-    const response = await axios.get(`https://fakestoreapi.com/products/${productId}`).catch((err)=>{
-        console.log('error', err)
-    })
+// const fetchProductDetails= async ()=>{
+//     const response = await axios.get(`https://fakestoreapi.com/products/${productId}`).catch((err)=>{
+//         console.log('error', err)
+//     })
  
-dispatch(selectedProduct(response.data))
+// dispatch(selectedProduct(response.data))
 
-}
+// }
 useEffect(()=>{
     if(productId && productId !== ""){
-        fetchProductDetails()
+      dispatch(selectedProduct(productId))
         return (()=>{
 dispatch(removeSelectedProduct())
 
