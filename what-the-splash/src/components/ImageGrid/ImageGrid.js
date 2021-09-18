@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { loadImages } from '../../actions/index';
+import Button from '../button';
 
 import './styles.css';
 
@@ -10,17 +13,11 @@ class ImageGrid extends Component {
     };
 
     componentDidMount() {
-        fetch(`https://api.unsplash.com/photos/?client_id=${key}&per_page=28`)
-            .then(res => res.json())
-            .then(images => {
-                this.setState({
-                    images,
-                });
-            });
+        this.props.loadImages();
     }
 
     render() {
-        const { images } = this.state;
+        const { isLoading, images, error, loadImages } = this.props;
         return (
             <div className="content">
                 <section className="grid">
@@ -37,10 +34,29 @@ class ImageGrid extends Component {
                             />
                         </div>
                     ))}
+                    {error && (
+                        <div className="error">{JSON.stringify(error)}</div>
+                    )}
+                    <Button
+                        onClick={() =>
+                            // !isLoading &&
+                            loadImages()
+                        }
+                        // loading={isLoading}
+                    >
+                        Load More
+                    </Button>
                 </section>
             </div>
         );
     }
 }
-
-export default ImageGrid;
+const mapStateToProps = ({ isLoading, images, error }) => ({
+    isLoading,
+    images,
+    error,
+});
+const mapDispatchToProps = dispatch => ({
+    loadImages: () => dispatch(loadImages()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(ImageGrid);
